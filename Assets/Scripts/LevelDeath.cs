@@ -12,8 +12,9 @@ public class LevelDeath : MonoBehaviour {
 
     void OnTriggerEnter()
     {
+
         StartCoroutine(YouFellOff());
-        scoreBox.GetComponent<Text>().text = "0";
+        GlobalScore.currentScore = 0;
     }
 
     IEnumerator YouFellOff(){

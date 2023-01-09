@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FinishLevel : MonoBehaviour {
 
@@ -28,6 +29,7 @@ public class FinishLevel : MonoBehaviour {
         levelMusic.SetActive(false);
         levelTimer.SetActive(false);
         levelComplete.Play();
+
         StartCoroutine(CalculateScore());
     }
     IEnumerator CalculateScore(){
@@ -38,5 +40,8 @@ public class FinishLevel : MonoBehaviour {
         totalScore.SetActive(true);
         yield return new WaitForSeconds(1);
         fadeOut.SetActive(true);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(RedirectToLevel.nextLevel);
+        GlobalScore.currentScore = 0;
     }
 }

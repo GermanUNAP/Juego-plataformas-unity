@@ -9,10 +9,11 @@ public class LevelDeath2 : MonoBehaviour {
     public GameObject youFell;
     public GameObject LevelAudio;
     public GameObject scoreBox;
+    public static int levelDeat = 0;
 
     void OnTriggerEnter()
     {
-        scoreBox.GetComponent<Text>().text = "0";
+        GlobalScore.currentScore = 0;
         StartCoroutine(YouFellOff());
         
     }
